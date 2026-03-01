@@ -1,0 +1,37 @@
+.favourite-book {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.favourite-book__cover {
+  height: 6rem;
+  width: 28%;
+  overflow: hidden;
+  border-radius: 0.3rem;
+}
+
+.favourite-book__cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  font-size: 0.75rem;
+}
+
+.favourite-book__details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.favourite-book__ap-container {
+  color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+}
+
+.favourite-book__toggle-btn {
+  all: unset;
+}

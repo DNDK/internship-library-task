@@ -1,0 +1,15 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --green: #013220;
+  --background: #fffbf1;
+  --red: #dc2525;
+  --gray: #888b8d3c;
+}
+
+body {
+  background-color: var(--background);
+}
