@@ -41,11 +41,11 @@
 }
 
 .homepage__search-results_nothing-found {
-  width: 80%;
+  width: 75%;
 }
 
 .homepage__loader-container {
-  width: 100%;
+  width: 75%;
   column-span: all;
   display: flex;
   flex-direction: column;
@@ -53,4 +53,8 @@
   font-family: sans-serif;
   color: gray;
   align-items: center;
+}
+
+.homepage__banner {
+  width: 75%;
 }

@@ -45,10 +45,10 @@ export function HomePage() {
       );
     }
     if (!query?.length) {
-      return <StartTypingBanner className="" />;
+      return <StartTypingBanner className="homepage__banner" />;
     }
     if (!data?.docs.length) {
-      return <NothingFoundBanner className="" />;
+      return <NothingFoundBanner className="homepage__banner" />;
     }
     return (
       <div className="homepage__search-results">
