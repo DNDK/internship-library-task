@@ -13,3 +13,14 @@
     width: 5rem;
   }
 }
+
+@media (width < 768px) {
+  .banner {
+    gap: 0.5rem;
+    font-size: 1rem;
+    > svg {
+      height: 3.5 rem;
+      width: 3.5rem;
+    }
+  }
+}

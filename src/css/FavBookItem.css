@@ -6,7 +6,7 @@
 }
 
 .favourite-book__cover {
-  height: 4rem;
+  height: 6rem;
   width: 33%;
   overflow: hidden;
   border-radius: 0.3rem;
@@ -34,4 +34,13 @@
 
 .favourite-book__toggle-btn {
   all: unset;
+  cursor: pointer;
+  > svg {
+    transition-property: transform;
+    transition-duration: 0.1s;
+  }
+}
+
+.favourite-book__toggle-btn:active > svg {
+  transform: scale(90%);
 }

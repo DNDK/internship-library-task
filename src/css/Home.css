@@ -8,12 +8,29 @@
   margin-bottom: 24px;
   margin-top: 24px;
   width: 45%;
+  text-align: justify;
   text-align: center;
+  > h2 {
+    font-weight: lighter;
+    font-size: 1.3rem;
+  }
+  > p {
+    font-family: sans-serif;
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.8);
+  }
 }
 
 .homepage__search {
   width: 33%;
   margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .homepage__search {
+    width: 90%;
+    margin: 0 auto;
+  }
 }
 
 .homepage__content-container {
@@ -22,6 +39,13 @@
   width: 100%;
   padding: 4rem 4rem;
   box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .homepage__content-container {
+    display: block;
+    padding: 1rem;
+  }
 }
 
 .homepage__search-results {
@@ -36,8 +60,38 @@
   }
 }
 
+@media (width < 768px) {
+  .homepage__search-results {
+    grid-template-columns: 1fr;
+    width: 100%;
+    > .book-card {
+      height: 30rem;
+    }
+  }
+}
+
+@media (768px < width < 1366px) {
+  .homepage__search-results {
+    grid-template-columns: repeat(5, 1fr);
+    width: 100%;
+  }
+}
+
+@media (1366px < width < 1800px) {
+  .homepage__search-results {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 .homepage__fav-container {
   width: 25%;
+}
+
+@media (max-width: 1366px) {
+  .homepage__fav-container {
+    display: none;
+    width: 0;
+  }
 }
 
 .homepage__search-results_nothing-found {
@@ -53,6 +107,13 @@
   font-family: sans-serif;
   color: gray;
   align-items: center;
+}
+
+@media (width < 1366px) {
+  .homepage__loader-container {
+    width: 100%;
+    padding-top: 2rem;
+  }
 }
 
 .homepage__banner {
