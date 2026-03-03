@@ -9,9 +9,9 @@ import type { SearchResult } from "../types/api-types";
 import { BookCard } from "../components/home-page/BookCard";
 import { FavouritesSection } from "../components/home-page/FavouritesSection";
 import { useLocalLiked } from "../hooks/useLocalLiked";
-import { BookSearchIcon } from "../components/ui/BookSearchIcon";
 import { StartTypingBanner } from "../components/home-page/StartTypingBanner";
 import { NothingFoundBanner } from "../components/home-page/NothingFoundBanner";
+import { useLikedBooksContext } from "../context/LikedBooksProvider";
 
 export function HomePage() {
   const [query, setQuery] = useState("");
@@ -24,7 +24,7 @@ export function HomePage() {
   useEffect(() => {
     const handleSmallQuery = () => setIsFetching(false);
     const search = async () => {
-      execute(undefined, { query: { q: queryDebounced } }).then((res) => {
+      execute(undefined, { query: { q: queryDebounced } }).then(() => {
         setIsFetching(false);
         console.log(data);
       });
@@ -33,8 +33,7 @@ export function HomePage() {
     else handleSmallQuery();
   }, [queryDebounced]);
 
-  const { getLikedBooks, addLikedBook } = useLocalLiked();
-
+  const likedContext = useLikedBooksContext();
   const renderMainContent = () => {
     if (isFetching) {
       return (
@@ -61,8 +60,11 @@ export function HomePage() {
               key={idx}
               coverId={doc.cover_i}
               id={doc.key}
+              isLiked={likedContext?.likedKeySet.has(doc.key) ?? false}
               onLike={(id) =>
-                addLikedBook(data.docs.find((doc) => doc.key === id))
+                likedContext?.toggleLikedBook(
+                  data.docs.find((doc) => doc.key === id),
+                )
               }
             />
           );
@@ -91,7 +93,7 @@ export function HomePage() {
       <div className="homepage__content-container">
         {renderMainContent()}
         <div className="homepage__fav-container">
-          <FavouritesSection />
+          <FavouritesSection books={likedContext?.likedBooks || []} />
         </div>
       </div>
     </div>

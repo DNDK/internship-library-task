@@ -1,11 +1,12 @@
+import { useState, useEffect } from "react";
+
 import "../../css/Favourites.css";
 import { useLocalLiked } from "../../hooks/useLocalLiked";
 import { HeartIcon } from "../icons/HeartIcon";
 import { FavBookItem } from "./FavBookItem";
+import type { SearchResDoc } from "../../types/api-types";
 
-export function FavouritesSection() {
-  const { getLikedBooks, addLikedBook } = useLocalLiked();
-
+export function FavouritesSection(props: { books: SearchResDoc[] }) {
   return (
     <div className="favourites">
       <div className="favourites__header">
@@ -15,13 +16,13 @@ export function FavouritesSection() {
         <div className="favourites__header-text">
           <span className="favourites__header-text-main">Favourites</span>
           <span className="favourites__header-text-secondary">
-            i books saved
+            {props.books.length} books saved
           </span>
         </div>
       </div>
       <div className="favourites__content">
-        {getLikedBooks().map((book, idx) => {
-          return <FavBookItem {...book} />;
+        {props.books.map((book) => {
+          return <FavBookItem book={book} />;
         })}
       </div>
     </div>

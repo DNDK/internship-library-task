@@ -1,4 +1,5 @@
 import type { SearchResDoc } from "../types/api-types";
+import { useState, useEffect } from "react";
 
 export function useLocalLiked() {
   const getLikedBooks = () => {
@@ -7,11 +8,18 @@ export function useLocalLiked() {
     return items;
   };
 
-  const addLikedBook = (item: SearchResDoc) => {
-    const items = getLikedBooks();
-    const itemsJSON = JSON.stringify([...items, item]);
-    localStorage.setItem("library__likedbooks", itemsJSON);
-  };
+  const [likedBooks, setLikedBooks] = useState<SearchResDoc[]>(getLikedBooks());
 
-  return { getLikedBooks, addLikedBook };
+  const toggleLikedBook = (item: SearchResDoc) => {
+    setLikedBooks((prev) => {
+      const exists = prev.some((i) => i.key === item.key);
+      const next = exists
+        ? prev.filter((i) => i.key !== item.key)
+        : [...prev, item];
+
+      localStorage.setItem("library__likedbooks", JSON.stringify(next));
+      return next;
+    });
+  };
+  return { likedBooks, getLikedBooks, toggleLikedBook };
 }

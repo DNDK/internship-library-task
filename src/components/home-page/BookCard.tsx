@@ -9,6 +9,7 @@ interface BookCardProps {
   title: string;
   authors: string[];
   publishYear: number;
+  isLiked: boolean;
   onLike: (id: string) => void;
 }
 
@@ -19,7 +20,10 @@ export function BookCard(props: BookCardProps) {
         className="book-card__like_button"
         onClick={() => props.onLike(props.id)}
       >
-        <HeartIcon fill="red" color="red" />
+        <HeartIcon
+          fill={props.isLiked ? "red" : "transparent"}
+          color={props.isLiked ? "red" : "current"}
+        />
       </button>
       <div className="book-card__cover_container">
         <CoverImg coverId={props.coverId} className="book-card__cover" />
