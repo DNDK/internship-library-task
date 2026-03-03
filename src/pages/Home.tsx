@@ -12,6 +12,12 @@ import { useLocalLiked } from "../hooks/useLocalLiked";
 import { StartTypingBanner } from "../components/home-page/StartTypingBanner";
 import { NothingFoundBanner } from "../components/home-page/NothingFoundBanner";
 import { useLikedBooksContext } from "../context/LikedBooksProvider";
+import { HeartIcon } from "../components/icons/HeartIcon";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "../components/ui/Popover";
 
 export function HomePage() {
   const [query, setQuery] = useState("");
@@ -94,6 +100,16 @@ export function HomePage() {
         {renderMainContent()}
         <div className="homepage__fav-container">
           <FavouritesSection books={likedContext?.likedBooks || []} />
+        </div>
+        <div className="homepage__fav-popover-container">
+          <Popover>
+            <PopoverTrigger className="homepage__fav-popover-trigger">
+              <HeartIcon />
+            </PopoverTrigger>
+            <PopoverContent className="homepage__fav-popover-content">
+              <FavouritesSection books={likedContext?.likedBooks || []} />
+            </PopoverContent>
+          </Popover>
         </div>
       </div>
     </div>

@@ -32,6 +32,15 @@
   flex-direction: column;
 }
 
+.favourite-book__author {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* Number of lines to show */
+  overflow: hidden;
+  /* Standard property for modern browsers (as of Oct 2025) */
+  line-clamp: 2;
+}
+
 .favourite-book__toggle-btn {
   all: unset;
   cursor: pointer;
