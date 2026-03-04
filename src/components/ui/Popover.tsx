@@ -53,7 +53,7 @@ export function PopoverContent({
   const popoverRef = useRef<HTMLDivElement | null>(null);
   const [shouldRender, setShouldRender] = useState<boolean>(!!ctx?.open);
   const [animationClass, setAnimationClass] = useState<string>("");
-  const handleAnimationEnd = (e) => {
+  const handleAnimationEnd = () => {
     if (!ctx?.open) {
       setShouldRender(false);
     }

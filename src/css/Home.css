@@ -64,6 +64,7 @@
   .homepage__search-results {
     grid-template-columns: 1fr;
     width: 100%;
+    padding-bottom: 6rem;
     > .book-card {
       height: 30rem;
     }
@@ -74,6 +75,7 @@
   .homepage__search-results {
     grid-template-columns: repeat(5, 1fr);
     width: 100%;
+    padding-bottom: 6rem;
   }
 }
 

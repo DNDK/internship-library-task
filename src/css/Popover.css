@@ -19,7 +19,7 @@
   }
   to {
     opacity: 1;
-    transorm: translateY(0);
+    transform: translateY(0);
   }
 }
 

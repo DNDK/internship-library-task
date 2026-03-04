@@ -55,6 +55,11 @@ export function HomePage() {
     if (!data?.docs.length) {
       return <NothingFoundBanner className="homepage__banner" />;
     }
+
+    const handleOnLike = (id: string) => {
+      const doc = data.docs.find((doc) => doc.key === id);
+      if (doc) likedContext?.toggleLikedBook(doc);
+    };
     return (
       <div className="homepage__search-results">
         {data.docs.map((doc, idx) => {
@@ -67,11 +72,7 @@ export function HomePage() {
               coverId={doc.cover_i}
               id={doc.key}
               isLiked={likedContext?.likedKeySet.has(doc.key) ?? false}
-              onLike={(id) =>
-                likedContext?.toggleLikedBook(
-                  data.docs.find((doc) => doc.key === id),
-                )
-              }
+              onLike={handleOnLike}
             />
           );
         })}
