@@ -22,3 +22,7 @@ However `npm` is also an option
 
 - `npm run dev` for development server
 - `npm run build` for building the project
+
+# P. S.
+
+This is definitely NOT a production-ready project, there are a lot of things to be improved and fixed.
